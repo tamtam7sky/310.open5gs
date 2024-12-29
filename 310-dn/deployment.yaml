@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dn
+  labels:
+    app: dn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dn
+  template:
+    metadata:
+      labels:
+        app: dn
+      # annotations:
+      #   cni.projectcalico.org/ipAddrs: "[\"10.0.2.11\"]"
+    spec:
+      containers:
+        - name: dn
+          image: ubuntu:22.04
+          imagePullPolicy: IfNotPresent
+          stdin: true
+          tty: true
